@@ -19,11 +19,13 @@ This is the url redirected to for admin_urls or for views that use login_require
     ^accounts/logout/
 
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    
+    url(r'^api/v1/', include('core.urls')),
     
     url(r'^accounts/login/$', 'django.contrib.auth.views.login',
        {'template_name': 'admin/login.html'}),
